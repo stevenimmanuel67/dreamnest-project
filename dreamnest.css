@@ -213,6 +213,15 @@ input, textarea{
     cursor: pointer;
 }
 
+#notes {
+    overflow-y: auto;
+    max-height: 250px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
 .notes{
     border: 1px solid black;
     background: transparent;

@@ -11,7 +11,7 @@ function addNote() {
     if (notes == null){
         notes = [];
     }else{
-        notes = JSON.parse(notes);
+        notes = JSON.parse(notes); //ada catatan
     }
 
     if (addText.value === '') {

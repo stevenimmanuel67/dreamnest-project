@@ -60,3 +60,9 @@ function showNotes() {
     }
 
 addNoteButton.addEventListener('click', addNote);
+
+function togglePopup() {
+    var popup = document.getElementById("popup-1");
+    popup.classList.toggle("active");
+}
+

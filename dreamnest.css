@@ -38,12 +38,14 @@ body {
 .firstname {
     color: white;
     font-weight: 700;
+    cursor: pointer;
 }
 
 .lastname {
     color: skyblue;
     font-weight: 400;
     padding-left: 4px;
+    cursor: pointer;
 }
 
 form {
@@ -90,6 +92,38 @@ button[type="submit"] {
 
 .shortcut-icon {
     position: relative;
+    display: none;
+}
+
+.user {
+    cursor: pointer;
+}
+
+.popup{
+    display: none;
+    height: 40px;
+    top: 100px;
+    background-color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    position: absolute;
+}
+
+.popup.active{
+    display: block;
+    transform: translate(-50%, -50%) scale(1);
+    height: 100px;
+    margin-top: 33px;
+    width: 250px;
+    cursor: default;
+    box-shadow: 0 0 10px 0.1px rgba(0, 0, 0, 0.5);
+    left: calc(50% - 100px);
+    cursor: default;
+}
+
+.popup.active .profile {
+    margin-right: 70px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -117,6 +151,9 @@ button[type="submit"] {
     justify-content: flex-start;
     align-items: center;
     margin-left: auto;
+    padding: 15px;
+    z-index: 999;
+    position: relative;
 }
 
 .navigation>li {
@@ -413,7 +450,7 @@ input, textarea{
 }
 
 .buttonsave:hover{
-    color: lightgray;
+    color: rgb(60, 60, 60);
 }
 
 #notes {

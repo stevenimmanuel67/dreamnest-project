@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/dreamnest.css" />
+    <title>Dreamnest</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+    <div class="BGContainer">
+        <nav class="wrapper">
+            <div class="brand">
+                <div class="firstname">dream</div>
+                <div class="lastname">nest</div>
+            </div>
+            <hr class="separator">
+            <div class="search-container">
+                <form id="searchForm">
+                    <input type="search" id="searchInput" name="search" placeholder="Cari Note" aria-label="Search" />
+                    <button type="submit" aria-label="Search Button">
+                        <i class="ri-corner-down-left-line"></i>
+                    </button>
+                </form>
+            </div>          
+            <ul class="navigation">
+                <li><a href="">home</a></li>
+                <li><a href="about">about</a></li>
+                <li><a href="/">logout</a></li>
+                <li class="shortcut-icon">
+                    <button onclick="togglePopup()">
+                        <img src="image/filbert.jpg" alt="user" width="35" height="35" class="user";>
+                    </button>
+                    <div class="popup" id="popup-1">
+                        <div class="profile"></div>
+                        <p><b>&nbsp&nbsp&nbspsteven</b></p>
+                        <p><br>&nbsp&nbsp&nbspsteven@gmail.com</p>
+                    </div>
+                </li>             
+            </ul>
+        </nav>
+        <div class="welcome-section">
+            <h1>WELCOME! <span class="brand-name">Guests!</span></h1>
+            <p>Tulis dan simpan catatan Anda dengan<br> mudah di Dreamnest</p>
+        </div>        
+        <div class="content" action="/dreamnest">
+            <div id="input-box">
+                <input type="text" id="addTitle" name="addTitle" placeholder="Judul">
+                <textarea name="addText" id="addText" cols="30" rows="10" placeholder="Tulis catatan disini..."></textarea>
+                <button class="buttonsave" id="addNote">Simpan</button>
+            </div>
+        </div>
+        <div id="notes" class="notes-container"></div>
+    </div>
+    <script>
+        const addTitle = document.getElementById('addTitle');
+const addText = document.getElementById('addText');
+const addNoteButton = document.getElementById('addNote');
+const notesDiv = document.getElementById('notes');
+
+
+addNoteButton.addEventListener('click', addNote);
+
+function addNote() {
+    console.log('Menyimpan catatan...');
+    let notes = localStorage.getItem('notes');
+    if (!notes || notes.length === 0) {
+        notes = [];
+    } else {
+        notes = JSON.parse(notes);
+    }    
+
+    if (addText.value === '') {
+        return;
+    }
+
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+    const formattedTime = `${currentDate.getHours()}:${currentDate.getMinutes() < 10 ? '0' : ''}${currentDate.getMinutes()}`;
+
+    const notesObj = {
+        title: addTitle.value,
+        text: addText.value,
+        date: formattedDate,
+        time: formattedTime,
+        backgroundColor: '#ffffff'
+    }
+
+    addTitle.value = '';
+    addText.value = '';
+    notes.unshift(notesObj);
+    localStorage.setItem('notes', JSON.stringify(notes));
+    showNotes();
+}
+
+function showNotes() {
+    let notesHTML = '';
+    let notes = localStorage.getItem('notes');
+    if (notes === null || notes.length === 0) {
+        return; // Jika tidak ada catatan, kembali dari fungsi
+    } else {
+        notes = JSON.parse(notes);
+    }
+    
+    for (let i = 0; i < notes.length; i++) {
+        const noteID = `note-${i}`;
+        notesHTML += `<div class="note" id="${noteID}">
+                        <div class="title boldtext">${notes[i].title}</div>
+                        <div class="text">${notes[i].text}</div>
+                        <div class="date">${notes[i].time} - ${notes[i].date}</div>
+                        <button class="hapusnote" onclick="hapusnote(${i})"><i class="ri-delete-bin-5-fill"></i></button>
+                        <button class="editnote" onclick="editnote(${i})"><i class="ri-edit-2-fill"></i></button>
+                      </div>`;
+    }
+    notesDiv.innerHTML = notesHTML;
+}
+
+function hapusnote(index) {
+    let notes = localStorage.getItem('notes');
+    if (notes === null || notes.length === 0) {
+        return;
+    } else {    
+        notes = JSON.parse(notes);
+    }
+    notes.splice(index, 1);
+    localStorage.setItem('notes', JSON.stringify(notes));
+    showNotes();
+}
+
+function editnote(index) {
+    let notes = localStorage.getItem('notes');
+    if (notes === null) {
+        return;
+    } else {
+        notes = JSON.parse(notes);
+    }
+    
+    // Menampilkan catatan yang akan diedit di input box
+    addTitle.value = notes[index].title;
+    addText.value = notes[index].text;
+    
+    // Setelah mengatur nilai input teks, atur fokus ke input teks
+    addText.focus();
+    
+    // Menghapus catatan yang akan diedit dari localStorage
+    notes.splice(index, 1);
+    localStorage.setItem('notes', JSON.stringify(notes));
+    
+    showNotes();
+}
+
+addNoteButton.addEventListener('click', addNote);
+
+function togglePopup() {
+    var popup = document.getElementById("popup-1");
+    popup.classList.toggle("active");
+}
+
+// Fungsi untuk menyesuaikan ketinggian textarea
+function adjustTextareaHeight(textarea) {
+    textarea.style.height = '20px'; // Setel tinggi textarea ke otomatis
+    textarea.style.height = textarea.scrollHeight + 'px'; // Setel tinggi textarea ke tinggi scroll
+}
+
+window.addEventListener('load', function() {
+    showNotes(); // Panggil fungsi untuk menampilkan catatan saat halaman dimuat
+
+    // Ambil semua textarea
+    var textareas = document.querySelectorAll('textarea');
+
+    // Iterasi melalui setiap textarea
+    textareas.forEach(function(textarea) {
+        adjustTextareaHeight(textarea); // Panggil fungsi untuk menyesuaikan ketinggian textarea
+    });
+
+    // Tambahkan event listener untuk mendeteksi perubahan pada textarea
+    textareas.forEach(function(textarea) {
+        textarea.addEventListener('input', function() {
+            adjustTextareaHeight(textarea); // Panggil fungsi untuk menyesuaikan ketinggian textarea saat ada perubahan input
+        });
+    });
+});
+
+const searchForm = document.getElementById('searchForm');
+
+searchForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Mencegah pengiriman formulir
+
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const filteredNotes = filterNotes(searchTerm);
+
+    displayFilteredNotes(filteredNotes);
+});
+
+function filterNotes(searchTerm) {
+    let notes = JSON.parse(localStorage.getItem('notes'));
+
+    if (!notes || notes.length === 0) {
+        return []; // Kembalikan array kosong jika tidak ada catatan
+    }
+
+    return notes.filter(note => {
+        const titleMatch = note.title.toLowerCase().includes(searchTerm);
+        const textMatch = note.text.toLowerCase().includes(searchTerm);
+        return titleMatch || textMatch;
+    });
+}
+
+function displayFilteredNotes(filteredNotes) {
+    let notesHTML = '';
+
+    filteredNotes.forEach((note, index) => {
+        const noteID = `note-${index}`;
+        notesHTML += `<div class="note" id="${noteID}">
+                        <div class="title boldtext">${note.title}</div>
+                        <div class="text">${note.text}</div>
+                        <div class="date">${note.time} - ${note.date}</div>
+                        <button class="hapusnote" onclick="hapusnote(${index})"><i class="ri-delete-bin-5-fill"></i></button>
+                        <button class="editnote" onclick="editnote(${index})"><i class="ri-edit-2-fill"></i></button>
+                      </div>`;
+    });
+
+    notesDiv.innerHTML = notesHTML;
+}
+
+    </script>
+</body>
+</html>

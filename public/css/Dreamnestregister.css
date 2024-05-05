@@ -1,0 +1,145 @@
+/* CSS untuk halaman login */
+
+*,
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    overflow: hidden; /* Menghilangkan overflow */
+}
+
+/* Container Background */
+.BGContainer {
+    background-color: rgb(112, 112, 112);
+    background-size: cover;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.4em;
+    color: #fff;
+    padding-left: 20px;
+    padding-top: 40px;
+    text-align: center;
+    justify-content: center;
+}
+
+.firstname {
+    font-weight: 700;
+}
+
+.lastname {
+    color: white;
+    font-weight: 400;
+    margin-right: 20px;
+    padding-left: 1px;
+}
+
+.BGContainer ul {
+    padding: 0; /* Menghapus padding bawaan dari ul */
+    list-style: none; /* Menghapus bullet points dari ul */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 10px 20px; /* Padding untuk membuat jarak dengan tepi */
+}
+
+
+
+.BGContainer ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Form Registrasi */
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; /* Menggunakan min-height agar kontainer selalu penuh tinggi layar */
+    padding: 20px; /* Padding untuk membuat jarak dengan tepi */
+    box-sizing: border-box; /* Mengikutsertakan padding dalam perhitungan ukuran */
+}
+
+
+.form-container {
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    text-align: left;
+    background-color: #f9f9f9; 
+    border: 2px solid #ddd; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 80px;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #333;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #333;
+}
+
+input[type="name"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.submit-btn {
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background-color: skyblue;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+    text-align: center;
+    justify-content: center;
+}
+
+.submit-btn:hover {
+    background-color: rgb(94, 183, 218);
+    color: black;
+}
+
+.login-info {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.login-info a {
+    color: rgb(39, 139, 179);
+    text-decoration: none;
+}
+
+.login-info a:hover {
+    text-decoration: underline;
+}

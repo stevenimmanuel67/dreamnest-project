@@ -1,0 +1,166 @@
+
+.BGContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(112, 112, 112);
+    overflow-x: hidden;
+    width: 100%;
+    background-size: cover;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    padding: 6px;
+    background-color: transparent;
+    width: 100%;
+    z-index: 999;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    color: #fff;
+    padding-left: 10px;
+}
+
+.firstname {
+    font-weight: 700;
+}
+
+.lastname {
+    color: white;
+    font-weight: 400;
+    margin-right: 20px;
+    padding-left: 4px;
+}
+
+
+form {
+    display: flex;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button[type="submit"] {
+    width: 40px;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    outline: none;
+}
+
+.search-container {
+    width: 100%;
+    flex: 1;
+    padding-left: 10px;
+
+}
+
+.search-container input[type="search"] {
+    visibility: visible;
+    outline: none;
+    border: none;
+    width: 90%;
+    height: 40px;
+    padding-left: 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.search-container input[type="search"]::placeholder {
+    color: #666; 
+}
+
+/* Popup User */
+.shortcut-icon {
+    position: relative;
+}
+
+.user {
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+    height: 50px;
+    top: 100px;
+    background-color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    position: absolute;
+    
+}
+
+.popup.active {
+    display: block;
+    transform: translate(-50%, -50%) scale(1);
+    height: 100px;
+    margin-top: 33px;
+    width: 250px;
+    box-shadow: 0 0 10px 0.1px rgba(0, 0, 0, 0.5);
+    left: calc(50% - 100px);
+    cursor: default;
+}
+
+.popup.active .profile {
+    margin-right: 70px;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #ffffff;
+    text-align: center;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+footer p {
+    margin: 0;
+}
+ 
+p {
+    color: #fff;
+}
+
+button {
+    font-weight: bold;
+}

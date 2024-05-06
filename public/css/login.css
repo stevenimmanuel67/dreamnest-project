@@ -1,0 +1,181 @@
+.html,
+body{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(112,112,112);
+}
+
+
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 90vh;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 40px;
+    text-align: left;
+    background-color: #f9f9f9; 
+    border: 2px solid #ddd; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #333; 
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #333; 
+}
+
+input[type="name"],
+input[type="email"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.submit-btn {
+    width: 20%;
+    display: block;
+    margin: 70px auto 0; 
+    padding: 10px;
+    border: none;
+    background-color: skyblue;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+
+.submit-btn:hover {
+    background-color: rgb(94, 183, 218);
+    color: black;
+}
+
+.login-info {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.login-info a {
+    color: rgb(39, 139, 179);
+    text-decoration: none;
+}
+
+.login-info a:hover {
+    text-decoration: underline;
+}.html,
+body{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(112, 112, 112);
+}
+
+
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 90vh;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 40px;
+    text-align: left;
+    background-color: #ffffff; 
+    border: 2px solid #ddd; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #333; 
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #333; 
+}
+
+input[type="name"],
+input[type="email"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.submit-btn {
+    width: 20%;
+    display: block;
+    margin: 70px auto 0; 
+    padding: 10px;
+    border: none;
+    background-color: skyblue;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+
+.submit-btn:hover {
+    background-color: rgb(94, 183, 218);
+    color: black;
+}
+
+.login-info {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.login-info a {
+    color: rgb(39, 139, 179);
+    text-decoration: none;
+}
+
+.login-info a:hover {
+    text-decoration: underline;
+}

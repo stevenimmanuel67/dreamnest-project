@@ -27,12 +27,43 @@ app.get('/', async (req,res) => {
     res.render("dreamnestregister")
 })
   
-
-app.get('/about', (req,res) => {
-    res.render('About_Us')
+app.get('/Login', async (req,res) => {
+    res.render("Login")
 })
 
-app.post("/dreamnestLoginHTML", async (req, res) => {
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        // Lakukan pengecekan apakah akun ada di database
+        const userExist = await dbs.findOne({ email });
+
+        if (userExist) {
+            // Jika akun ditemukan, cek apakah password cocok
+            if (userExist.password === password) {
+                res.redirect('/dreamnest'); // Jika password cocok, redirect ke halaman setelah login
+            } else {
+                res.render('Login', { error: 'Password is incorrect' }); // Jika password tidak cocok, tampilkan pesan error
+            }
+        } else {
+            // Jika akun tidak ditemukan, tampilkan pesan error
+            res.render('Login', { error: 'Email not found. Please register first.' });
+        }
+    } catch (error) {
+        console.error('An error occurred:', error);
+        res.render('Login', { error: 'An error occurred. Please try again later.' });
+    }
+});
+
+app.get('/AboutDreamnest', (req,res) => {
+    res.render('AboutDreamnest')
+})
+
+app.post("/dreamnest", (req, res) => {
+    res.render("dreamnest");
+});
+
+app.post("/dreamnestregister", async (req, res) => {
 
     const data = {
         email:req.body.email,
@@ -41,16 +72,19 @@ app.post("/dreamnestLoginHTML", async (req, res) => {
     }
 
     // Check if the username already exists in the database
-    const  userExist = await dbs.findOne({ email: data.email });
+    const userExist = await dbs.findOne({ email: data.email });
 
     if (userExist) {
         res.send('Email already exist');
     } else {
-        const userdata = await dbs.insertMany(data);
-        console.log(userdata);
-        res.render("dreamnest")
+        try {
+            const userdata = await dbs.create(data);
+            console.log(userdata);
+            res.redirect("/dreamnest");
+        } catch (error) {
+            res.send('An error occurred');
+        }
     }
-
 });
 
 
